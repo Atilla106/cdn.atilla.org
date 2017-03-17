@@ -1,0 +1,18 @@
+before_script:
+  - id
+  - pwd
+
+stages:
+  - deploy
+
+deploy:prod:
+  stage: deploy
+  environment:
+    name: production
+    url: https://cdn.atilla.org
+  only:
+    - master
+  script:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRODUCTION_PRIVATE_KEY")
+    - rsync --checksum --recursive --delete --delete-during --itemize-changes --verbose * cdn@webstatic-prod.prod.infra.atilla.org:~/website
