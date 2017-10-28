@@ -12,5 +12,4 @@ Create a new branch for your content. Submit for validation with pull request.
 
 ## Deploy
 
-The update of the CDN will be done using a CI. The CI is not available for the
-moment. Please contact administrator to deploy.
+The update of the CDN is done automatically throught the CI, after each commit in master.
